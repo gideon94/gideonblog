@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "django_env\\Scripts\\python.exe",
+    "git.ignoreLimitWarning": true
+}

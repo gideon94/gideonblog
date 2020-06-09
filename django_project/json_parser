@@ -1,0 +1,47 @@
+import json                   
+from blog.models import Post
+
+with open('posts.json') as f:
+     posts_json = json.load(f)
+
+for post in posts_json:
+    post = Post(title=post['title'],content=post['content'],author_id=post['user_id'])
+    post.save()
+
+S3 create with CORS
+IAM copy paste key and sccret key
+pip install boto3 // Package for AWS
+pip install django-storages
+add to settings.py apps = "storages"
+
+heroku deployment:
+git init
+git add .
+git commit -m "first commit"
+heroku create gideonblog
+
+heroku git:remote -a gideonblog // if cloned or git init 
+git push heroku master
+
+change static
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_URL = '/static/'
+
+add Procfile
+
+disallowed host -- Add settings to heroku confid
+add ALLOWED_HOSTS in settings.py
+import secrets
+secrets.token_hex(24)
+debug = true
+heroku config:set EMAIL_HOST_PASSWORD='XXXXXXXXXXXXXXXXX'
+
+operational error - push sqlite databases
+heroku addons
+pip install django-heroku
+update requirements.txt
+
+heroku run python manage.py migrate
+heroku bash
+python manage.py createsuperuser
+
